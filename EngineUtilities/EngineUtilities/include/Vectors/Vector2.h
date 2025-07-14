@@ -13,7 +13,6 @@ using namespace EngineMath;
  */
 class CVector2 {
 public:
-        return CVector2(x / fac, y / fac);
  float x; ///< X component of the vector
  float y; ///< Y component of the vector
 
