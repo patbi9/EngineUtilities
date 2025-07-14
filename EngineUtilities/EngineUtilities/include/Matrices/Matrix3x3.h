@@ -5,97 +5,104 @@
 
 namespace EU {
 
-    /**
-     * @class Matrix3x3
-     * @brief Represents a 3x3 matrix with support for linear algebra operations.
-     *
-     * Includes arithmetic operations, determinant, transpose, inverse,
-     * adjugate, cofactors, and vector transformation in homogeneous coordinates.
-     */
-    class Matrix3x3 {
-    public:
-        float m[3][3]; ///< Matrix elements in row-major order
+ /**
+  * @class Matrix3x3
+  * @brief Represents a 3x3 matrix with support for linear algebra operations.
+  *
+  * Includes arithmetic operations, determinant, transpose, inverse,
+  * adjugate, cofactors, and vector transformation in homogeneous coordinates.
+  */
+ class
+  Matrix3x3 {
+  public:
+  float m[3][3]; ///< Matrix elements in row-major order
 
-        /**
-         * @brief Default constructor. Initializes to identity matrix.
-         */
-        Matrix3x3() {
-            setIdentity();
-        }
+  /**
+   * @brief Default constructor. Initializes to identity matrix.
+   */
+  Matrix3x3() {
+   setIdentity();
+  }
 
-        /**
-         * @brief Constructs a matrix with given element values.
-         */
-        Matrix3x3(float m00, float m01, float m02,
+  /**
+   * @brief Constructs a matrix with given element values.
+   */
+  Matrix3x3(float m00, float m01, float m02,
             float m10, float m11, float m12,
             float m20, float m21, float m22) {
-            m[0][0] = m00; m[0][1] = m01; m[0][2] = m02;
-            m[1][0] = m10; m[1][1] = m11; m[1][2] = m12;
-            m[2][0] = m20; m[2][1] = m21; m[2][2] = m22;
-        }
+   m[0][0] = m00; m[0][1] = m01; m[0][2] = m02;
+   m[1][0] = m10; m[1][1] = m11; m[1][2] = m12;
+   m[2][0] = m20; m[2][1] = m21; m[2][2] = m22;
+  }
 
-        /**
-         * @brief Adds two matrices.
-         */
-        Matrix3x3 operator+(const Matrix3x3& otro) const {
-            Matrix3x3 r;
-            for (int i = 0; i < 3; ++i)
-                for (int j = 0; j < 3; ++j)
-                    r.m[i][j] = m[i][j] + otro.m[i][j];
-            return r;
-        }
+  /**
+   * @brief Adds two matrices.
+   */
+  Matrix3x3
+   operator+(const Matrix3x3& otro) const {
+   Matrix3x3 r;
+   for (int i = 0; i < 3; ++i)
+    for (int j = 0; j < 3; ++j)
+     r.m[i][j] = m[i][j] + otro.m[i][j];
+   return r;
+  }
 
-        /**
-         * @brief Adds another matrix in-place.
-         */
-        Matrix3x3& operator+=(const Matrix3x3& otro) {
-            for (int i = 0; i < 3; ++i)
-                for (int j = 0; j < 3; ++j)
-                    m[i][j] += otro.m[i][j];
-            return *this;
-        }
+  /**
+   * @brief Adds another matrix in-place.
+   */
+  Matrix3x3&
+   operator+=(const Matrix3x3& otro) {
+   for (int i = 0; i < 3; ++i)
+    for (int j = 0; j < 3; ++j)
+     m[i][j] += otro.m[i][j];
+   return *this;
+  }
 
-        /**
-         * @brief Subtracts two matrices.
-         */
-        Matrix3x3 operator-(const Matrix3x3& otro) const {
-            Matrix3x3 r;
-            for (int i = 0; i < 3; ++i)
-                for (int j = 0; j < 3; ++j)
-                    r.m[i][j] = m[i][j] - otro.m[i][j];
-            return r;
-        }
+  /**
+   * @brief Subtracts two matrices.
+   */
+  Matrix3x3
+   operator-(const Matrix3x3& otro) const {
+   Matrix3x3 r;
+   for (int i = 0; i < 3; ++i)
+    for (int j = 0; j < 3; ++j)
+     r.m[i][j] = m[i][j] - otro.m[i][j];
+   return r;
+  }
 
-        /**
-         * @brief Subtracts another matrix in-place.
-         */
-        Matrix3x3& operator-=(const Matrix3x3& otro) {
-            for (int i = 0; i < 3; ++i)
-                for (int j = 0; j < 3; ++j)
-                    m[i][j] -= otro.m[i][j];
-            return *this;
-        }
+  /**
+   * @brief Subtracts another matrix in-place.
+   */
+  Matrix3x3&
+   operator-=(const Matrix3x3& otro) {
+   for (int i = 0; i < 3; ++i)
+    for (int j = 0; j < 3; ++j)
+     m[i][j] -= otro.m[i][j];
+   return *this;
+  }
 
-        /**
-         * @brief Multiplies the matrix by a scalar.
-         */
-        Matrix3x3 operator*(float sca) const {
-            Matrix3x3 r;
-            for (int i = 0; i < 3; ++i)
-                for (int j = 0; j < 3; ++j)
-                    r.m[i][j] = m[i][j] * sca;
-            return r;
-        }
+  /**
+   * @brief Multiplies the matrix by a scalar.
+   */
+  Matrix3x3
+   operator*(float sca) const {
+   Matrix3x3 r;
+   for (int i = 0; i < 3; ++i)
+    for (int j = 0; j < 3; ++j)
+     r.m[i][j] = m[i][j] * sca;
+   return r;
+  }
 
-        /**
-         * @brief Multiplies the matrix by a scalar in-place.
-         */
-        Matrix3x3& operator*=(float sca) {
-            for (int i = 0; i < 3; ++i)
-                for (int j = 0; j < 3; ++j)
-                    m[i][j] *= sca;
-            return *this;
-        }
+  /**
+   * @brief Multiplies the matrix by a scalar in-place.
+   */
+  Matrix3x3&
+   operator*=(float sca) {
+    for (int i = 0; i < 3; ++i)
+     for (int j = 0; j < 3; ++j)
+      m[i][j] *= sca;
+    return *this;
+  }
 
         /**
          * @brief Multiplies this matrix by another matrix.
